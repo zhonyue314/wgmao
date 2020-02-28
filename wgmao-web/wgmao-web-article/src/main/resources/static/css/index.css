@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1581579222647&di=9cce1eed856ba221e404ccd9c3dbe2ca&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01fa4756e68b8e6ac7255885033acc.jpg%402o.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-attachment: fixed;
+    /*overflow: hidden;*/
+}
+
+.body-box {
+    width: 80%;
+    display: flex;
+    height: 979px;
+    margin: 0 auto;
+    z-index: 1;
+    overflow: auto;
+    background-color: rgba(248, 248, 255, 0.5);
+}
+
+.index-header {
+    padding: 50px 100px 0 100px;
+    width: 80%;
+    position: absolute;
+    z-index: 1;
+    height: 56px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.link-ul {
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+.link-li {
+    margin-right: 12px;
+}
+
+.link {
+    color: black;
+    font-size: 16px;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-keyword {
+    width: 500px;
+    height: 34px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background-color: white;
+    font-size: 14px;
+    line-height: 34px;
+    box-shadow: none;
+}
+
+.search-submit {
+    float: right;
+    width: 60px;
+    height: 34px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background: url("../img/ss.jpg");
+}
+
+.user-img-link {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+/*主体内容*/
+.index-body {
+    text-align: center;
+    width: 74%;
+    position: absolute;
+    padding-left: 100px;
+}
+
+/*主菜单*/
+.primary-menu {
+    /*background-color: #515151;*/
+    padding: 0 5px 20px 5px;
+    margin-left: 55px;
+    width: auto;
+    float: left;
+    text-align: left;
+}
+
+.link-ul-pr {
+    text-align: center;
+    align-items: center;
+}
+
+.link-li-pr {
+    margin-top: 15px;
+}
+
+.link-pr {
+    color: #3fc7ff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.article-list-title {
+    padding-top: 10px;
+    text-align: center;
+    color: red;
+    font-size: 18px;
+    margin-left: 100px ;
+    background-color: #515151;
+}
+
+/*文章列表*/
+.article-list {
+    width: 65%;
+    height: 100%;
+    position: absolute;
+    margin-left: 70px;
+    text-align: left;
+}
+
+.article-card {
+    padding: 20px 10px;
+    background-color: #515151;
+    margin-left: 100px;
+}
+
+.like {
+    color: cornflowerblue;
+}
+
+.contents-preview {
+    /*margin: 5px 0 5px 0;*/
+    font-size: 14px;
+    color: rgba(65, 65, 65, 0.95);
+}
+
+.user-img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+    /*display: inline-block;*/
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.user-list {
+    width: auto;
+}
+
+.user-name {
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+.interval-left {
+    float: left;
+}
+
+.interval-right {
+    float: right;
+}
+
+/*广告div*/
+.advertising-list {
+    float: right;
+    margin-top: 10px;
+    width: 300px;
+    height: 250px;
+}
+
+/*页脚*/
+.index-footer {
+    width: 70%;
+    font-size: 18px;
+    padding-top: 900px;
+    margin-left: 200px;
+    text-align: center;
+}
+
+.link-logo {
+    text-align: center;
+    padding-top: 10px;
+    margin-left: 5px;
+    color: #7cc4ff;
+}

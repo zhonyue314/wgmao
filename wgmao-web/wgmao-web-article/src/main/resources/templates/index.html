@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>问个猫</title>
+    <link rel="icon" href="/img/favicon.ico">
+    <!--引入样式-->
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+</head>
+<body>
+<div class="body-box" id="app">
+    <div class="index-header">
+        <div class="header-link">
+            <ul class="link-ul">
+                <li class="link-li">
+                    <a href="" class="link">首页</a>
+                </li>
+                <li class="link-li">
+                    <a href="" class="link">文章</a>
+                </li>
+                <li class="link-li">
+                    <a href="" class="link">问答</a>
+                </li>
+                <li class="link-li">
+                    <a href="" class="link">活动</a>
+                </li>
+                <li class="link-li">
+                    <a href="" class="link">专题</a>
+                </li>
+            </ul>
+        </div>
+        <div class="search-box">
+            <form>
+                <input type="text" class="search-keyword">
+                <button type="button" class="search-submit"></button>
+            </form>
+        </div>
+        <div class="user-link">
+            <ul class="link-ul">
+                <li class="link-li">
+                    <a href="" class="user-img-link">
+                        <img :src="userimg" style="width: 50px;height: 50px">
+                    </a>
+                </li>
+                <li class="link-li">
+                    <a href="" class="link">VIP</a>
+                </li>
+                <li class="link-li">
+                    <a href="" class="link">消息</a>
+                </li>
+                <li class="link-li">
+                    <a href="" class="link">收藏</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="index-body" style="padding-top: 120px">
+        <div class="primary-menu">
+            <ul class="link-ul-pr">
+                <li class="link-li-pr"><a class="link-pr" href="">热门</a></li>
+                <li class="link-li-pr"><a class="link-pr" href="">编程</a></li>
+                <li class="link-li-pr"><a class="link-pr" href="">Adobe</a></li>
+                <li class="link-li-pr"><a class="link-pr" href="">数据库</a></li>
+                <li class="link-li-pr"><a class="link-pr" href="">计算机硬件</a></li>
+            </ul>
+        </div>
+        <div class="article-list">
+            <div class="article-list-title" >热门文章推荐</div>
+            <div class="article-card" v-for="item in items.articleUserList" :key="item.index">
+                <div class="contents-preview">
+                    <a th:href="'/api/warticle/content?id='+item.article.id" target="_blank">
+                        <h2 style="margin-bottom: 10px">{{item.article.title}}</h2>
+                        {{item.article.content}}
+                    </a>
+                </div>
+                <div class="interval-left">
+                    <ul class="user-list link-ul">
+                        <li class="link-li">
+                            <a href="" class="user-img">
+                                <img :img="item.article.image">
+                            </a>
+                        </li>
+                        <li class="user-name link-li"><a th:href="@{/api/user/personal?username=item.username}"></a>{{item.username}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="interval-right">
+                    <ul class="link-ul">
+                        <li class="link-li">
+                            <span @click="like(item.article.id)" class="user-img">
+                                <img src="/img/like.jpg" style="margin-right:-10px"/>
+                            </span>
+                        </li>
+                        <li class="link-li like">{{item.article.thumbup}}</li>
+                        <li class="link-li">
+                            <span class="user-img">
+                                <img src="/img/read1.jpg" style="margin-right:-10px;width: 20px"/>
+                            </span>
+                        </li>
+                        <li class="link-li like">{{item.article.visits}}</li>
+                        <li class="link-li">
+                            <span href="" class="user-img">
+                                <img src="/img/comment.jpg" style="margin-right:-10px"/>
+                            </span>
+                        </li>
+                        <li class="link-li like">{{item.article.comment}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="advertising-list">
+            <ul>
+                <li><img src="/img/1572939427420.jpg"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="index-footer">
+        <div style="margin-bottom: 5px;color: white">wgmao</div>
+        <a class="link-logo" href="">关于我</a>
+        <a class="link-logo" href="">联系我</a>
+        <a class="link-logo" href="">友情连接</a>
+    </div>
+</div>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script src="/js/script.js"></script>
+</body><!-- partial -->
+<script th:inline="javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            items: [[${items}]]
+            // userimg: "",
+            },
+            // methods:{
+            //     jum:function (id, username) {
+            //         location.href="/api/warticle/content?id="+id+"&username="+username;
+            //     }
+            // }
+        })
+</script>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/img/favicon.ico">
+    <title>文章标题-问个猫</title>
+    <!--引入样式-->
+    <link rel="stylesheet" href="/css/article.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+</head>
+<body>
+<div class="body-box">
+    <div class="primary-menu">
+        <div class="index-header">
+            <div class="header-link">
+                <ul class="link-ul">
+                    <li class="link-li">
+                        <a href="" class="link">首页</a>
+                    </li>
+                    <li class="link-li">
+                        <a href="" class="link">文章</a>
+                    </li>
+                    <li class="link-li">
+                        <a href="" class="link">问答</a>
+                    </li>
+                    <li class="link-li">
+                        <a href="" class="link">活动</a>
+                    </li>
+                    <li class="link-li">
+                        <a href="" class="link">专题</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="search-box">
+                <form>
+                    <input type="text" class="search-keyword">
+                    <button type="button" class="search-submit"></button>
+                </form>
+            </div>
+            <div class="user-link">
+                <ul class="link-ul">
+                    <li class="link-li">
+                        <a href="" class="user-img-link">
+                            <img :src="user_img" src="/img/user-img-zhangsan.gif" style="width: 50px;height: 50px">
+                        </a>
+                    </li>
+                    <li class="link-li">
+                        <a href="" class="link">消息</a>
+                    </li>
+                    <li class="link-li">
+                        <a href="" class="link">写文章</a>
+                    </li>
+                    <li class="link-li">
+                        <a href="" class="link">提问</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="index-body" style="padding-top: 150px">
+        <div class="user_list">
+            <div class="user_list_username">
+                <ul class="link-ul">
+                    <li class="link-li">
+                        <a href="" class="user-img-link">
+                            <img :src="user_author_img" src="/img/user-img-xyz.jpg" style="width: 50px;height: 50px">
+                        </a>
+                    </li>
+                    <li class="link-li" style="margin-left: 20px">
+                        <a href="" class="link" style="color: white">文章作者</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="user_list_item">
+                <dl class="text-user">
+                    <dt>文章</dt>
+                    <dd>117</dd>
+                </dl>
+                <dl class="text-user">
+                    <dt>粉丝</dt>
+                    <dd>55</dd>
+                </dl>
+                <dl class="text-user">
+                    <dt>获赞</dt>
+                    <dd>1115</dd>
+                </dl>
+                <dl class="text-user">
+                    <dt>评论</dt>
+                    <dd>20</dd>
+                </dl>
+                <dl class="text-user">
+                    <dt>访问</dt>
+                    <dd>1万+</dd>
+                </dl>
+            </div>
+            <div class="user-opration">
+                <div class="user-btn"><a href="" style="color: #ffb87c">关注</a></div>
+                <div class="user-btn"><a href="" style="color: #ffb87c">私信</a></div>
+            </div>
+            <div class="hot-article">
+                <h3>热门文章</h3>
+                <div class="hot-content">
+                    <ul>
+                        <li><a href="" class="link-article">文章标题</a>
+                            <p class="read">阅读数
+                                <spam>123</spam>
+                            </p>
+                        </li>
+                        <li><a href="" class="link-article">文章标题</a>
+                            <p class="read">阅读数
+                                <spam>123</spam>
+                            </p>
+                        </li>
+                        <li><a href="" class="link-article">文章标题</a>
+                            <p class="read">阅读数
+                                <spam>123</spam>
+                            </p>
+                        </li>
+                        <li><a href="" class="link-article">文章标题</a>
+                            <p class="read">阅读数
+                                <spam>123</spam>
+                            </p>
+                        </li>
+                        <li><a href="" class="link-article">文章标题</a>
+                            <p class="read">阅读数
+                                <spam>123</spam>
+                            </p>
+                        </li>
+                        <li><a href="" class="link-article">文章标题</a>
+                            <p class="read">阅读数
+                                <spam>123</spam>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <main>
+            <div class="article-content">
+                <div class="article-header">
+                    <div class="article-title">
+                        <h1 style="color: #d3d3d3" th:text="${articleUserVo.getArticle().getTitle()}"></h1>
+                    </div>
+                    <div class="article-info">
+                        <span th:text="${articleUserVo.getUsername()}">{{articleUserVo.username}}</span>
+                        <span class="time">文章发布时间 <span th:text="${articleUserVo.getArticle().getCreatetime()}">{{articleUserVo.article.createtime}}</span></span>
+                        <span class="read-count">阅读数 <span
+                                th:text="${articleUserVo.getArticle().getVisits()}"></span></span>
+                        <a href="javascript:void(0)" @click="collect(articleUser.article.id,1)"
+                           style="text-decoration: none;color: #68a9ff;margin-left: 5px"><img
+                                src="/img/collect.png"/><span style="margin-left: 5px">收藏</span> </a>
+                    </div>
+                </div>
+                <!--文章内容-->
+                <article class="article-body" th:text="${articleUserVo.getArticle().getContent()}">
+                    <!--{{articleUserVo.article.content}}-->
+                </article>
+                <!--评论框-->
+                <div class="comment-box">
+                    <div class="comment-user-img" style="float: left">
+                        <img style="width: 50px;height: 50px;" src="/img/user-img-zhangsan.gif">
+                    </div>
+                    <form class="comment-input-box">
+                        <input type="hidden">
+                        <textarea class="comment-input" placeholder="说点有用的"></textarea>
+                    </form>
+                    <div style="float: right;margin-top: 18px">
+                        <span style="color: #999999;font-size: 14px">可输入1000个字符</span>
+                        <input type="button" class="btn" value="取消评论">
+                        <input type="button" class="btn" value="发表评论">
+                    </div>
+                </div>
+                <!--推荐文章-->
+                <div class="recommend-article" th:each="articleUser : ${articleUserList}">
+                    <span class="recommend-article-list">
+                        <span>
+                            <a href="" style="display: inline-block">
+                                <h4 style="color: #d3d3d3;font-size: 16px" th:text="${articleUser.article.title}">{{item.article.title}}</h4>
+                            </a>
+                        </span>
+                        <span style="display: inline;float: right" >阅读数 <span th:text="${articleUser.article.visits}"></span></span>
+                        <div style="margin-top: 5px">
+                            <a href="">
+                                    <p style="color: #999999;display: inline;font-size: 15px" th:text="${articleUser.article.content}">
+                                        {{item.article.content}}
+                                     </p>
+                            </a><a href="">
+                            <span style="display: inline;float: right;color: #72adff" th:text="${articleUser.username}">{{item.username}}</span></a>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </main>
+        <!--广告框-->
+        <div class="advertising">
+            <ul>
+                <li><img src="/img/1572939427420.jpg"></li>
+                <li><img src="/img/1572939427420.jpg"></li>
+                <li><img src="/img/1572939427420.jpg"></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+</body>
+<script th:inline="javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            // articleUserVo: [[${articleUserVo}]],
+            items: [[${items}]]
+        }
+    })
+</script>
+</html>

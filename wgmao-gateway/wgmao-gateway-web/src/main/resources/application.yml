@@ -1,0 +1,96 @@
+spring:
+  application:
+    name: gateway-web
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]': # 匹配所有请求
+            allowedOrigins: "*" #跨域处理 允许所有的域
+            allowedMethods: # 支持的方法
+            - GET
+            - POST
+            - PUT
+            - DELETE
+      routes:
+      #文章微服务
+      - id: wgmao_articel_route
+        uri: lb://article
+        predicates:
+        - Path=/api/article/**
+        filters:
+        #- PrefixPath=/brand
+        - StripPrefix=1
+        #用户微服务
+      - id: wgmao_user_route
+        uri: lb://user
+        predicates:
+        - Path=/api/user/**,/api/address/**,/api/areas/**,/api/cities/**,/api/provinces/**
+        filters:
+        - StripPrefix=1
+        #认证微服务
+      - id: wgmao_oauth_user
+        uri: lb://user-auth
+        predicates:
+        - Path=/api/oauth/**
+        filters:
+        - StripPrefix=1
+      #交友微服务
+      - id: wgmao_friend_route
+        uri: lb://friend
+        predicates:
+        - Path=/api/friend/**
+        filters:
+        - StripPrefix=1
+      #文章渲染微服务
+      - id: wgmao_warticle_web_route
+        uri: lb://article-web
+        predicates:
+        - Path=/api/warticle/**
+        filters:
+        - StripPrefix=1
+      #问答微服务
+      - id: wgmao_qa_route
+        uri: lb://qa
+        predicates:
+        - Path=/api/qa/**
+        filters:
+        - StripPrefix=1
+        #评论微服务
+      - id: wgmao_comment_route
+        uri: lb://comment
+        predicates:
+        - Path=/api/comment/**
+        filters:
+        - StripPrefix=1
+        #消息微服务
+      - id: wgmao_notice_route
+        uri: lb://notice
+        predicates:
+        - Path=/api/notice/**
+        filters:
+        - StripPrefix=1
+        #搜索微服务
+      - id: wgmao_search_route
+        uri: lb://search
+        predicates:
+        - Path=/api/search/**
+        filters:
+        - StripPrefix=1
+  redis:
+    host: 192.168.200.128
+server:
+  port: 8001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka
+  instance:
+    prefer-ip-address: true
+management:
+  endpoint:
+    gateway:
+      enabled: true
+    web:
+      exposure:
+        include: true
