@@ -184,7 +184,7 @@ public class Article implements Serializable {
                 ", istop='" + istop + '\'' +
                 ", visits=" + visits +
                 ", thumbup=" + thumbup +
-                ", comment=" + comment +
+                ", notice=" + comment +
                 ", state='" + state + '\'' +
                 ", channelid='" + channelid + '\'' +
                 ", url='" + url + '\'' +

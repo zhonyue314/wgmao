@@ -4540,7 +4540,7 @@ showdown.subParser('makeMarkdown.node', function (node, globals, spansOnly) {
     return showdown.subParser('makeMarkdown.txt')(node, globals);
   }
 
-  // HTML comment
+  // HTML notice
   if (node.nodeType === 8) {
     return '<!--' + node.data + '-->\n\n';
   }

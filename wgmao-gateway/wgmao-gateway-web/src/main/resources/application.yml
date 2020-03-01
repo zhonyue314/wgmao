@@ -58,9 +58,9 @@ spring:
         - StripPrefix=1
         #评论微服务
       - id: wgmao_comment_route
-        uri: lb://comment
+        uri: lb://notice
         predicates:
-        - Path=/api/comment/**
+        - Path=/api/notice/**
         filters:
         - StripPrefix=1
         #消息微服务

@@ -25,4 +25,8 @@ public interface ArticleService {
     Page<Article> findByPage(Map<String, Object> map, Integer page, Integer size);
 
     List<Article> list();
+
+    void thumbup(String articleId, String userId);
+
+    Boolean subscribe(String articleId, String userId);
 }

@@ -20,7 +20,9 @@ public interface UserService {
     //删除
     void delete(String username);
 
-    User selectById(String username);
+    User selectById(String userId);
+
+    User selectUser(String username);
 
     User findOne(String id);
 }

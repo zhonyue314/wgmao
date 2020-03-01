@@ -1,6 +1,6 @@
-package com.wgmao.user;
+package com.wgmao.notice;
 
-import com.wgmao.user.config.TokenDecode;
+import com.wgmao.util.IdWorker;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,22 +10,19 @@ import org.springframework.context.annotation.Bean;
 
 /**
  * @Author: zyxyz zhongyue314@163.com
- * @Date: 2020/1/10 19:52
+ * @Date: 2020/3/1 17:29
  */
-
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan(basePackages = "com.wgmao.user.dao")
-@EnableFeignClients
-public class UserApplication {
+@MapperScan(basePackages = "com.wgmao.notice.dao")
+@EnableFeignClients(basePackages = {"com.wgmao.user.feign","com.wgmao.article.feign"})
+public class NoticeApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication.run(NoticeApplication.class, args);
     }
 
     @Bean
-    public TokenDecode tokenDecode() {
-        return new TokenDecode();
+    public IdWorker idWorker() {
+        return new IdWorker();
     }
 }
-
-

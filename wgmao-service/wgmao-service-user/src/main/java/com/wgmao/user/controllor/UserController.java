@@ -35,7 +35,7 @@ public class UserController {
 
     @GetMapping("/load/{username}")
     public User findUserInfo(@PathVariable("username") String username) {
-        User user = userService.selectById(username);
+        User user = userService.selectUser(username);
         return user;
     }
 
@@ -48,12 +48,12 @@ public class UserController {
     /**
      * 根据id查询数据
      *
-     * @param username
+     * @param userId
      * @return
      */
-    @GetMapping("{username}")
-    public Result findById(@PathVariable("username") String username) {
-        return new Result(true, StatusCode.OK, "查询成功", userService.selectById(username));
+    @GetMapping("{userId}")
+    public Result selectById(@PathVariable("userId") String userId) {
+        return new Result(true, StatusCode.OK, "查询成功", userService.selectById(userId));
     }
 
     /**

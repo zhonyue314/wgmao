@@ -1,12 +1,12 @@
 package com.wgmao.article.pojo;
 
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * @Author: zyxyz zhongyue314@163.com
  * @Date: 2020/2/28 0:18
  */
-public class ArticleUser {
+public class ArticleUser implements Serializable {
     private String username;
     private Article article;
 

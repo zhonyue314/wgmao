@@ -14,7 +14,7 @@
     <modules>
         <module>wgmao-service-user-api</module>
         <module>wgmao-service-article-api</module>
-        <module>wgmao-service-comment-api</module>
+        <module>wgmao-service-notice-api</module>
     </modules>
 
     <dependencies>

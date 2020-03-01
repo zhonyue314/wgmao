@@ -18,7 +18,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public UserMapper userMapper;
 
-    public User selectById(String username){
+    public User selectById(String userId){
+        User user1 = new User();
+        user1.setId(userId);
+        User user = userMapper.selectOne(user1);
+        return user;
+    }
+
+    @Override
+    public User selectUser(String username) {
         User user1 = new User();
         user1.setUsername(username);
         User user = userMapper.selectOne(user1);
