@@ -15,8 +15,8 @@
         <module>wgmao-web</module>
         <module>wgmao-eureka</module>
         <module>wgmao-gateway</module>
-        <module>wgmao-common-db</module>
         <module>wgmao-user-oauth</module>
+        <module>wgmao-common-db</module>
     </modules>
 
     <parent>
