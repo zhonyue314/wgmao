@@ -74,20 +74,23 @@ public class ArticleController {
 
     @GetMapping("/list")
     public List<Article> findAll() {
-        List<Article> articleList = articleService.findAll();
-        return articleList;
+        return articleService.findAll();
     }
 
-    @GetMapping
-    public Result list() {
-        List<Article> list = articleService.list();
-        return new Result(true, StatusCode.OK, "查询成功", list);
+//    @GetMapping
+//    public List<Article> list() {
+//        return articleService.list();
+//    }
+
+    @GetMapping("/articleContent/{articleId}")
+    public Map selectArticleRecommend(@PathVariable("articleId") String articleId) {
+        Map map = articleService.selectArticleRecommend(articleId);
+        return map;
     }
 
     @GetMapping("/{articleId}")
-    public Result<Article> findById(@PathVariable("articleId") String articleId) {
-        Article article = articleService.findById(articleId);
-        return new Result<>(true, StatusCode.OK, "查询成功", article);
+    public Article findById(@PathVariable("articleId") String articleId) {
+        return articleService.findById(articleId);
     }
 
     @PutMapping

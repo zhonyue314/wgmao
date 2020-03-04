@@ -15,6 +15,7 @@
         <module>wgmao-service-user</module>
         <module>wgmao-service-article</module>
         <module>wgmao-service-notice</module>
+        <module>wgmao-service-system</module>
 
     </modules>
 

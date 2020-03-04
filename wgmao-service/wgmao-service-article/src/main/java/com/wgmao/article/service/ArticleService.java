@@ -29,4 +29,6 @@ public interface ArticleService {
     void thumbup(String articleId, String userId);
 
     Boolean subscribe(String articleId, String userId);
+
+    Map selectArticleRecommend(String articleId);
 }

@@ -21,10 +21,16 @@ public interface ArticleFeign {
     @GetMapping("/article/list")
     List<Article> findAll();
 
+//    @GetMapping("/article")
+//    List<Article> list();
+
+    @GetMapping("/article/articleContent/{articleId}")
+    Map selectArticleRecommend(@PathVariable("articleId") String articleId);
+
     @GetMapping("/article/page/{page}/{size}")
     Result findByPage(@RequestBody Map<String, Object> map, @PathVariable("page") Integer page, @PathVariable("size") Integer size);
 
     @GetMapping("/article/{articleId}")
-    Result<Article> findById(@PathVariable("articleId") String articleId);
+    Article findById(@PathVariable("articleId") String articleId);
 
 }

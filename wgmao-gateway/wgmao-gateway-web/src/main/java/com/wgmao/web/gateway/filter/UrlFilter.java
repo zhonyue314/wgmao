@@ -3,7 +3,7 @@ package com.wgmao.web.gateway.filter;
 public class UrlFilter {
 
     //所有需要传递令牌的地址
-    public static String filterPath = "/api/warticle/**,/api/article/**,/api/notice,/api/user/**,/api/address/**,/login/**";
+    public static String filterPath = "/api/warticle/**,/api/article/**,/api/notice/**,/api/user/**,/api/address/**,/login/**";
 
     public static boolean hasAuthorize(String url) {
 

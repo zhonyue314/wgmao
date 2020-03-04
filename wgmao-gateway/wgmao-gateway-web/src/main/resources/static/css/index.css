@@ -128,7 +128,9 @@ a {
 }
 
 .article-list-title {
+    padding-bottom: 10px;
     padding-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
     color: red;
     font-size: 18px;
@@ -146,6 +148,7 @@ a {
 }
 
 .article-card {
+    height: 130px;
     padding: 20px 10px;
     background-color: #515151;
     margin-left: 100px;

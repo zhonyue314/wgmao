@@ -26,12 +26,6 @@ spring:
     host: 192.168.200.128
     username: wgmao
     password: wgmao
-eureka:
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:6868/eureka
-  instance:
-    prefer-ip-address: true
 # Mybatis-Plus 配置
 mybatis-plus:
   #  mapper-locations: classpath:/mapper/*Mapper.xml
@@ -47,22 +41,27 @@ mybatis-plus:
       lazyLoadingEnabled: true #延时加载的开关
       multipleResultSetsEnabled: true #开启延时加载，否则按需加载属性
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
-feign:
-  hystrix:
-    #    enabled: false
-    enabled: true
+#feign:
+#  hystrix:
+#    enabled: false
+##  client:
+##    config:
+##      default:
+###        connetTimeout: 60000
+##        readTimeout: 20000
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          strategy: SEMAPHORE
+#          thread:
+#            timeoutInMilliseconds: 20000
+eureka:
   client:
-    config:
-      default:
-        connetTimeout: 60000
-        readTimeout: 20000
-hystrix:
-  command:
-    default:
-      execution:
-        timeout:
-          enabled: true
-        isolation:
-          strategy: SEMAPHORE
-          thread:
-            timeoutInMilliseconds: 20000
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka
+  instance:
+    prefer-ip-address: true

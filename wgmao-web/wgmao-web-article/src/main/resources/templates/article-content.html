@@ -11,7 +11,7 @@
     <script src="/js/axios.js"></script>
 </head>
 <body>
-<div class="body-box">
+<div class="body-box" id="app">
     <div class="primary-menu">
         <div class="index-header">
             <div class="header-link">
@@ -69,7 +69,8 @@
                         </a>
                     </li>
                     <li class="link-li" style="margin-left: 20px">
-                        <a href="" class="link" style="color: white">文章作者</a>
+                        <a href="" class="link" style="color: white"><span
+                                th:text="${articleUserVo.getUsername()}">文章作者</span></a>
                     </li>
                 </ul>
             </div>
@@ -173,17 +174,19 @@
                     </div>
                 </div>
                 <!--推荐文章-->
-                <div class="recommend-article" th:each="articleUser : ${articleUserList}">
+                <div class="recommend-article" th:each="articleUser : ${items.articleUserList}">
                     <span class="recommend-article-list">
                         <span>
                             <a href="" style="display: inline-block">
                                 <h4 style="color: #d3d3d3;font-size: 16px" th:text="${articleUser.article.title}">{{item.article.title}}</h4>
                             </a>
                         </span>
-                        <span style="display: inline;float: right" >阅读数 <span th:text="${articleUser.article.visits}"></span></span>
+                        <span style="display: inline;float: right">阅读数 <span
+                                th:text="${articleUser.article.visits}"></span></span>
                         <div style="margin-top: 5px">
                             <a href="">
-                                    <p style="color: #999999;display: inline;font-size: 15px" th:text="${articleUser.article.content}">
+                                    <p style="color: #999999;display: inline;font-size: 15px"
+                                       th:text="${articleUser.article.content}">
                                         {{item.article.content}}
                                      </p>
                             </a><a href="">
@@ -208,12 +211,23 @@
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 </body>
 <script th:inline="javascript">
-    var app = new Vue({
+    new Vue({
         el: "#app",
         data: {
-            // articleUserVo: [[${articleUserVo}]],
+            articleUserVo: [[${articleUserVo}]],
+            // articleUserList: [[${articleUserList}]],
             items: [[${items}]]
-        }
+        },
+        // methods: {
+        //     loadRecommend: function () {
+        //         axios.get("/api/warticle/list").then(function (response) {
+        //             app.articleUserList = response.data;
+        //         })
+        //     }
+        // },
+        // created: function () {
+        //     this.loadRecommend();
+        // }
     })
 </script>
 </html>

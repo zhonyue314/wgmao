@@ -36,22 +36,22 @@ eureka:
       defaultZone: http://127.0.0.1:6868/eureka
   instance:
     prefer-ip-address: true
-feign:
-  hystrix:
-    #    enabled: false
-    enabled: true
-  client:
-    config:
-      default:
-        connetTimeout: 60000
-        readTimeout: 20000
-hystrix:
-  command:
-    default:
-      execution:
-        timeout:
-          enabled: true
-        isolation:
-          strategy: SEMAPHORE
-          thread:
-            timeoutInMilliseconds: 20000
+#feign:
+#  hystrix:
+#    #    enabled: false
+#    enabled: true
+#  client:
+#    config:
+#      default:
+#        connetTimeout: 60000
+#        readTimeout: 20000
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          strategy: SEMAPHORE
+#          thread:
+#            timeoutInMilliseconds: 20000

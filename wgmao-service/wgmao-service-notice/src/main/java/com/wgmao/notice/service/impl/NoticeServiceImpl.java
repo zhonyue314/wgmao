@@ -3,6 +3,7 @@ package com.wgmao.notice.service.impl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.wgmao.article.feign.ArticleFeign;
+import com.wgmao.article.pojo.Article;
 import com.wgmao.entity.Result;
 import com.wgmao.notice.dao.NoticeFreshMapper;
 import com.wgmao.notice.dao.NoticeMapper;
@@ -108,9 +109,8 @@ public class NoticeServiceImpl implements NoticeService {
         notice.setOperatorName(userMap.get("nickname").toString());
 
         //查询对象名称
-        Result articleResult = articleFeign.findById(notice.getTargetId());
-        HashMap articleMap = (HashMap) articleResult.getData();
+        Article article = articleFeign.findById(notice.getTargetId());
         //设置对象名称到消息通知中
-        notice.setTargetName(articleMap.get("title").toString());
+        notice.setTargetName(article.getTitle());
     }
 }

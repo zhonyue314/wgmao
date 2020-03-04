@@ -9,8 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>wgmao-service-notice-api</artifactId>
-
+    <artifactId>wgmao-service-system-api</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.wgmao</groupId>

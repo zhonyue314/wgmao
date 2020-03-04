@@ -4,9 +4,13 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.wgmao.article.dao.ArticleMapper;
 import com.wgmao.article.pojo.Article;
+import com.wgmao.article.pojo.ArticleUser;
 import com.wgmao.article.service.ArticleService;
+import com.wgmao.entity.Result;
 import com.wgmao.notice.feign.NoticeFeign;
 import com.wgmao.notice.pojo.Notice;
+import com.wgmao.user.feign.UserFeign;
+import com.wgmao.user.pojo.User;
 import com.wgmao.util.IdWorker;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -41,6 +45,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private UserFeign userFeign;
 
     /**
      * 订阅
@@ -86,6 +93,33 @@ public class ArticleServiceImpl implements ArticleService {
             rabbitAdmin.declareBinding(binding);
             return true;
         }
+    }
+
+    @Override
+    public Map selectArticleRecommend(String articleId) {
+        Map map = new HashMap<>();
+        //封装文章
+        Article article = articleMapper.selectById(articleId);
+        map.put("article", article);
+
+        //封装相关推荐文章
+        ArrayList<ArticleUser> articleUserList = new ArrayList<>();
+        List<Article> articleList = articleMapper.selectList(null);
+        for (Article article1 : articleList) {
+            ArticleUser articleUser = new ArticleUser();
+            User user = null;
+            try {
+                user = userFeign.findOne(article1.getUserid());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            String username = user.getUsername();
+            articleUser.setArticle(article);
+            articleUser.setUsername(username);
+            articleUserList.add(articleUser);
+        }
+        map.put("articleUserList", articleUserList);
+        return map;
     }
 
     /**

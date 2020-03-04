@@ -70,7 +70,7 @@
             <div class="article-list-title" >热门文章推荐</div>
             <div class="article-card" v-for="item in items.articleUserList" :key="item.index">
                 <div class="contents-preview">
-                    <a th:href="'/api/warticle/content?id='+item.article.id" target="_blank">
+                    <a :href="'/api/warticle/content?id='+item.article.id+'&username='+item.username" target="_blank">
                         <h2 style="margin-bottom: 10px">{{item.article.title}}</h2>
                         {{item.article.content}}
                     </a>
@@ -82,7 +82,7 @@
                                 <img :img="item.article.image">
                             </a>
                         </li>
-                        <li class="user-name link-li"><a th:href="@{/api/user/personal?username=item.username}"></a>{{item.username}}
+                        <li class="user-name link-li"><a :href="'/api/user/personal?username='+item.username"></a>{{item.username}}
                         </li>
                     </ul>
                 </div>
