@@ -67,10 +67,4 @@ public class ArticleController {
         return "article-content";
     }
 
-//    @InitBinder
-//    public void initBinder(WebDataBinder binder){
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        dateFormat.setLenient(false);
-//        binder.registerCustomEditor(Date.class,new CustomDateEditor(dateFormat,true));
-//    }
 }
